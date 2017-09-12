@@ -1,4 +1,4 @@
-package com.workingagenda.fissure.PrefHelper;
+package com.sanjay.gifmaker.PrefHelper;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,7 +13,7 @@ import android.widget.NumberPicker;
 public class DelayPickerPreference extends DialogPreference {
 
     private int Delay = 0;
-    private NumberPicker np= null;
+    private NumberPicker np = null;
 
     public DelayPickerPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,7 +44,6 @@ public class DelayPickerPreference extends DialogPreference {
         if (positiveResult) {
 
             Delay = np.getValue();
-
 
 
             if (callChangeListener(String.valueOf(Delay))) {

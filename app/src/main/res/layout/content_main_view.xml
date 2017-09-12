@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
+    android:orientation="vertical"
     >
     <EditText
+        android:id="@+id/titleValue"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/title_hint"
-        android:id="@+id/titleValue"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:hint="@string/title_hint" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/generateGIF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/generateGIF"
+            android:layout_marginLeft="10dp"
             android:drawableLeft="@drawable/ic_gif_black_24dp"
-            android:text="@string/generate_btn"
-            android:layout_marginLeft="10dp" />
+            android:text="@string/generate_btn" />
         <ProgressBar
             android:id="@+id/progressBar"
-            android:minHeight="20dip"
-            android:maxHeight="40dip"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@android:style/Widget.Holo.Light.ProgressBar.Large"/>
+            android:maxHeight="40dip"
+            android:minHeight="20dip" />
         <ImageView
+            android:id="@+id/preview"
             android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:id="@+id/preview"/>
+            android:layout_height="75dp" />
     </LinearLayout>
     <TextView
         android:id="@+id/title_images"
+        style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_images"
-        style="?android:attr/listSeparatorTextViewStyle"
         />
     <TextView
+        android:id="@+id/imageSelections"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/short_instructions"
-        android:id="@+id/imageSelections"
-        android:layout_marginLeft="15dp" />
+        android:layout_marginLeft="15dp"
+        android:text="@string/short_instructions" />
     <ListView
+        android:id="@+id/listImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listImage"></ListView>
+        android:layout_height="wrap_content" />
 </LinearLayout>

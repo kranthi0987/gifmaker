@@ -1,22 +1,15 @@
-package com.workingagenda.fissure.PrefHelper;
+package com.sanjay.gifmaker.PrefHelper;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.workingagenda.fissure.BuildConfig;
-import com.workingagenda.fissure.R;
+import com.sanjay.gifmaker.R;
 
 
 /**
@@ -24,6 +17,7 @@ import com.workingagenda.fissure.R;
  */
 public class SettingsActivity extends AppCompatActivity {
     private AppCompatDelegate mDelegate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // For adding a Toolbar, it requires implementing methods manuelly yuck
@@ -57,12 +51,12 @@ public class SettingsActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == android.R.id.home)
             finish();
-        if (id == R.id.action_source) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/polypmer/fissure-android"));
-            startActivity(browserIntent);
-            return true;
-        }
+//        if (id == R.id.action_source) {
+//            Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+//                    Uri.parse("https://github.com/polypmer/fissure-android"));
+//            startActivity(browserIntent);
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -94,6 +88,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onDestroy();
         getDelegate().onDestroy();
     }
+
     public void setSupportActionBar(@Nullable Toolbar toolbar) {
         getDelegate().setSupportActionBar(toolbar);
     }

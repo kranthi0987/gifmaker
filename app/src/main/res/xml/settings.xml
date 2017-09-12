@@ -3,63 +3,63 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/pref_gif_category">
         <CheckBoxPreference
-            android:key="pref_repeat"
-            android:title="@string/pref_repeat"
-            android:summary="@string/pref_repeat_summary"
             android:defaultValue="true"
+            android:key="pref_repeat"
+            android:summary="@string/pref_repeat_summary"
+            android:title="@string/pref_repeat"
             />
         <EditTextPreference
-            android:title="@string/pref_default_title"
+            android:defaultValue="fissureGIF"
             android:key="pref_default_title"
-            android:defaultValue="fissureGIF"/>
-        <com.workingagenda.fissure.PrefHelper.NumberPickerPreference
-            android:title="@string/pref_compression"
+            android:title="@string/pref_default_title" />
+        <com.sanjay.gifmaker.PrefHelper.NumberPickerPreference
+            android:defaultValue="30"
             android:key="pref_compression"
             android:summary="@string/pref_compression_summary"
-            android:defaultValue="30"
+            android:title="@string/pref_compression"
             />
-        <com.workingagenda.fissure.PrefHelper.DelayPickerPreference
-            android:title="@string/pref_delay"
-            android:summary="@string/pref_delay_summary"
-            android:key="pref_delay"
+        <com.sanjay.gifmaker.PrefHelper.DelayPickerPreference
             android:defaultValue="250"
+            android:key="pref_delay"
+            android:summary="@string/pref_delay_summary"
+            android:title="@string/pref_delay"
             />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_dir_category">
         <CheckBoxPreference
-            android:key="pref_img_load"
-            android:title="@string/pref_img_load_title"
-            android:summary="@string/pref_img_load_summary"
             android:defaultValue="true"
+            android:key="pref_img_load"
+            android:summary="@string/pref_img_load_summary"
+            android:title="@string/pref_img_load_title"
             />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_app_category">
         <Preference
             android:key="pref_static_field_key0"
             android:selectable="false"
-            android:title="@string/app_version_title"
-            android:summary="@string/app_version"/>
+            android:summary="@string/app_version"
+            android:title="@string/app_version_title" />
         <Preference
             android:key="pref_static_field_key1"
             android:selectable="true"
-            android:title="@string/license_title"
-            android:summary="@string/license">
+            android:summary="@string/license"
+            android:title="@string/license_title">
             <intent android:action="android.intent.action.VIEW"
                 android:data="https://github.com/polypmer/fissure-android"/>
         </Preference>
         <Preference
             android:key="pref_static_field_key2"
             android:selectable="true"
-            android:title="@string/author_title"
-            android:summary="@string/author">
+            android:summary="@string/author"
+            android:title="@string/author_title">
             <intent android:action="android.intent.action.VIEW"
                 android:data="https://github.com/polypmer"/>
         </Preference>
         <Preference
             android:key="pref_static_field_key3"
             android:selectable="true"
-            android:title="@string/contributors"
-            android:summary="@string/contributors_list">
+            android:summary="@string/contributors_list"
+            android:title="@string/contributors">
             <intent android:action="android.intent.action.VIEW"
                 android:data="https://github.com/polypmer/fissure-android/graphs/contributors"/>
         </Preference>

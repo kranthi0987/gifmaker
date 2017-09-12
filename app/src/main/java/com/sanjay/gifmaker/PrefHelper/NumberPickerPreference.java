@@ -1,4 +1,4 @@
-package com.workingagenda.fissure.PrefHelper;
+package com.sanjay.gifmaker.PrefHelper;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,7 +10,7 @@ import android.widget.NumberPicker;
 public class NumberPickerPreference extends DialogPreference {
 
     private int Quality = 0;
-    private NumberPicker np= null;
+    private NumberPicker np = null;
 
     public NumberPickerPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,7 +41,6 @@ public class NumberPickerPreference extends DialogPreference {
         if (positiveResult) {
 
             Quality = np.getValue();
-
 
 
             if (callChangeListener(String.valueOf(Quality))) {

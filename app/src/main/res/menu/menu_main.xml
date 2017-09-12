@@ -1,25 +1,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.workingagenda.fissure.MainActivity">
+    tools:context="com.sanjay.gifmaker.MainActivity">
     <item
         android:id="@+id/action_view"
+        android:icon="@drawable/ic_remove_red_eye_white_24dp"
         android:orderInCategory="0"
         android:title="@string/title_view"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_remove_red_eye_white_24dp"/>
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_clear"
+        android:icon="@drawable/ic_cached_white_24dp"
         android:orderInCategory="200"
         android:title="@string/title_clear"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_cached_white_24dp"/>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings_white_24dp"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_settings_white_24dp"/>
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_instructions"
         android:orderInCategory="400"

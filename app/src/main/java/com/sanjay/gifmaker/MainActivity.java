@@ -1,7 +1,6 @@
-package com.workingagenda.fissure;
+package com.sanjay.gifmaker;
 
 import android.Manifest;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -9,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,7 +37,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.gun0912.tedpicker.ImagePickerActivity;
-import com.workingagenda.fissure.PrefHelper.SettingsActivity;
+import com.sanjay.gifmaker.PrefHelper.SettingsActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -78,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Create GIF folder if it doesn't exit
         GIF_DIR = new File(Environment.getExternalStorageDirectory() + File.separator +
-                Environment.DIRECTORY_PICTURES + File.separator +"Gifs");
-        if(!GIF_DIR.exists()) {
+                Environment.DIRECTORY_PICTURES + File.separator + "Gifs");
+        if (!GIF_DIR.exists()) {
             GIF_DIR.mkdir();
             // Somehow mount this guy?
         }
@@ -177,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
-        } else if (id == R.id.action_view){
+        } else if (id == R.id.action_view) {
             Intent intent = new Intent(this, ViewActivity.class);
             startActivity(intent);
             return true;
@@ -196,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         and then implement these two override methods
          */
         super.onCreateContextMenu(menu, v, menuInfo);
-        if (v.getId()== R.id.listImage) {
+        if (v.getId() == R.id.listImage) {
             MenuInflater inflater = new MenuInflater(this);
             menu.setHeaderTitle(R.string.image_options);
             inflater.inflate(R.menu.menu_context, menu);
@@ -227,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
                     ArrayList<Uri> image_uris = data.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
 
-                    for(int i=0; i<image_uris.size(); i++) {
+                    for (int i = 0; i < image_uris.size(); i++) {
 
                         Uri uri = Uri.fromFile(new File(image_uris.get(i).toString()));// URI, not file, of selected File
                         Bitmap bitmap = null;
@@ -304,13 +302,54 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void RemoveItem(int pos) {
+        bitmaps.remove(pos);
+        uris.remove(pos);
+        images.remove(pos);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void ClearAll() {
+        bitmaps.clear();
+        uris.clear();
+        images.clear();
+        adapter.clear();
+        prevImg.setImageResource(android.R.color.transparent);
+    }
+
+    private void NotifyWroteGIF() {
+        ClearAll();
+        Toast.makeText(getBaseContext(), "Finished Writing GIF",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    private void toggleOrientationLock() {
+        // TODO: Doesn't work?
+        // Check if locked
+        int isLocked = android.provider.Settings.System.getInt(
+                getContentResolver(),
+                Settings.System.ACCELEROMETER_ROTATION, 0
+        );
+        if (isLocked == 0) {
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            } else {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
+        } else {
+            // renable
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        }
+    }
+
     private class GenerateGif extends AsyncTask<ArrayList, Integer, Void> {
         // Second param is Progress
         @Override
         protected Void doInBackground(ArrayList... params) {
             // Write Gif
             String fn;
-            if (filename.isEmpty()){
+            if (filename.isEmpty()) {
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                 DEFAULT_TITLE = sharedPreferences.getString("pref_default_title", "fissureGIF");
                 fn = DEFAULT_TITLE.concat(".gif");
@@ -349,47 +388,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void a) {
             progressBar.setVisibility(View.GONE);
             NotifyWroteGIF();
-        }
-    }
-
-    private void RemoveItem(int pos) {
-        bitmaps.remove(pos);
-        uris.remove(pos);
-        images.remove(pos);
-        adapter.notifyDataSetChanged();
-    }
-
-    private void ClearAll() {
-        bitmaps.clear();
-        uris.clear();
-        images.clear();
-        adapter.clear();
-        prevImg.setImageResource(android.R.color.transparent);
-    }
-
-    private void NotifyWroteGIF() {
-        ClearAll();
-        Toast.makeText(getBaseContext(), "Finished Writing GIF",
-                        Toast.LENGTH_SHORT).show();
-    }
-    private void toggleOrientationLock() {
-        // TODO: Doesn't work?
-        // Check if locked
-        int isLocked = android.provider.Settings.System.getInt(
-                getContentResolver(),
-                Settings.System.ACCELEROMETER_ROTATION, 0
-        );
-        if (isLocked == 0){
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            }
-            else {
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
-        } else {
-            // renable
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         }
     }
 }

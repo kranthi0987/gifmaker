@@ -1,4 +1,4 @@
-package com.workingagenda.fissure.Adapters;
+package com.sanjay.gifmaker.Adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.workingagenda.fissure.R;
+import com.sanjay.gifmaker.R;
 
 import java.io.File;
 import java.util.List;
@@ -27,10 +27,10 @@ public class FilesAdapter extends ArrayAdapter<File> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
 
-        if(v == null) {
+        if (v == null) {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
             v = vi.inflate(R.layout.row_file, null);
@@ -46,7 +46,7 @@ public class FilesAdapter extends ArrayAdapter<File> {
             SharedPreferences sharedPreferences =
                     PreferenceManager.getDefaultSharedPreferences(getContext());
             boolean loadImages = sharedPreferences.getBoolean("pref_img_load", true);
-            if (loadImages){
+            if (loadImages) {
                 Bitmap bmap = BitmapFactory.decodeFile(f.getPath());
                 img.setImageBitmap(bmap);
             }
@@ -57,7 +57,7 @@ public class FilesAdapter extends ArrayAdapter<File> {
                 txt.setText(title);
             }
             // TODO: Change to String.format()
-            tag.setText(Long.toString((f.length()/1024)/1000) + "MB");
+            tag.setText(Long.toString((f.length() / 1024) / 1000) + "MB");
 
         }
 

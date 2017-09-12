@@ -4,9 +4,9 @@ An Android App for generating and viewing GIFs.
 
 [<img src="https://f-droid.org/badge/get-it-on.png"
       alt="Get it on F-Droid"
-      height="80">](https://f-droid.org/app/com.workingagenda.fissure)[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
+      height="80">](https://f-droid.org/app/com.sanjay.gifmaker)[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
       alt="Get it on Google Play"
-      height="80">](https://play.google.com/store/apps/details?id=com.workingagenda.fissure)
+      height="80">](https://play.google.com/store/apps/details?id=com.sanjay.gifmaker)
 
 ## What's new in v0.3.7
 - Load GIF files on async thread (Thanks @Swati4star)

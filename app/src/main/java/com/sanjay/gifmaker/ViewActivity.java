@@ -1,17 +1,11 @@
-package com.workingagenda.fissure;
+package com.sanjay.gifmaker;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.ParcelFileDescriptor;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -19,29 +13,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-
 import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.util.Arrays;
 
 /**
  * Created by fen on 8/3/16.
  */
-public class ViewActivity  extends AppCompatActivity {
+public class ViewActivity extends AppCompatActivity {
+    final int chunkSize = 1024; // One kb at a time
     private File tmpFile;
     private WebView webView;
     private Uri uri;
-    final int chunkSize = 1024; // One kb at a time
     private byte[] imageData = new byte[chunkSize];
     private Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,9 +76,9 @@ public class ViewActivity  extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         File bundledFile = new File(Environment.getExternalStorageDirectory() +
                 File.separator + "tmp.jpeg");
-        if(bundledFile.exists()){
+        if (bundledFile.exists()) {
             outState.putString("tmpFileUri", bundledFile.toURI().toString());
-            if (uri != null){ // This is probs unnecessary
+            if (uri != null) { // This is probs unnecessary
                 outState.putString("fileUri", uri.toString());
             }
         }
@@ -109,7 +101,7 @@ public class ViewActivity  extends AppCompatActivity {
         if (id == R.id.action_load) {
             showFileChooser();
             return true;
-        } else if(id == R.id.action_select) {
+        } else if (id == R.id.action_select) {
             Intent intent = new Intent(this, FilesActivity.class);
             startActivityForResult(intent, 0);
             return true;
@@ -149,7 +141,7 @@ public class ViewActivity  extends AppCompatActivity {
     private void showFileChooser() {
         // TODO: Check if have permission
         File GIF_DIR = new File(Environment.getExternalStorageDirectory() + File.separator +
-                Environment.DIRECTORY_PICTURES + File.separator +"Gifs");
+                Environment.DIRECTORY_PICTURES + File.separator + "Gifs");
         Uri dirUri = Uri.parse(GIF_DIR.getPath());
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setDataAndType(dirUri, "image/*");
@@ -167,12 +159,11 @@ public class ViewActivity  extends AppCompatActivity {
     }
 
 
-
-    public class displayFile extends AsyncTask<String,String,String > {
+    public class displayFile extends AsyncTask<String, String, String> {
 
         File tmpFile;
 
-        public displayFile(File tmpFile){
+        public displayFile(File tmpFile) {
             this.tmpFile = tmpFile;
         }
 
@@ -184,7 +175,7 @@ public class ViewActivity  extends AppCompatActivity {
                 out = new FileOutputStream(tmpFile);
                 in = getContentResolver().openInputStream(uri);
                 int bytesRead;
-                while((bytesRead = in.read(imageData)) > 0 ) {
+                while ((bytesRead = in.read(imageData)) > 0) {
                     out.write(Arrays.copyOfRange(imageData, 0, Math.max(0, bytesRead)));
                 }
             } catch (IOException e) {
@@ -201,7 +192,7 @@ public class ViewActivity  extends AppCompatActivity {
             String gif = "file://" + tmpFile.getPath();
             Log.d("TMP file", tmpFile.getPath());
             // TODO: Create padding
-            return  "<style>img{padding-top:3%;padding-right:2%;padding-left:2%;display: inline; height: auto; max-width: 95%;}"+
+            return "<style>img{padding-top:3%;padding-right:2%;padding-left:2%;display: inline; height: auto; max-width: 95%;}" +
                     "</style><body><img src=\"" + gif + "\"/></body>";
         }
 

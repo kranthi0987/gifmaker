@@ -1,4 +1,4 @@
-package com.workingagenda.fissure;
+package com.sanjay.gifmaker;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,10 +13,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
-import com.workingagenda.fissure.Adapters.FilesAdapter;
+import com.sanjay.gifmaker.Adapters.FilesAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -85,7 +84,7 @@ public class FilesActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int pos = info.position;
         File file = files.get(pos);
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.action_remove:
                 file.delete();
                 files = getListFiles();
@@ -99,11 +98,11 @@ public class FilesActivity extends AppCompatActivity {
     private List<File> getListFiles() {
         ArrayList<File> inFiles = new ArrayList<File>(); // Must be arraylist no List
         File parentDir = new File(Environment.getExternalStorageDirectory() + File.separator +
-                Environment.DIRECTORY_PICTURES + File.separator +"Gifs");
+                Environment.DIRECTORY_PICTURES + File.separator + "Gifs");
         File[] files = parentDir.listFiles();
-        if(files != null) {// why do I need this?
+        if (files != null) {// why do I need this?
             for (File file : files) {
-                if(file.getName().endsWith(".gif")){
+                if (file.getName().endsWith(".gif")) {
                     inFiles.add(file);
                 }
             }
