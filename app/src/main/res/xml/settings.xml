@@ -8,8 +8,9 @@
             android:summary="@string/pref_repeat_summary"
             android:title="@string/pref_repeat"
             />
+        <!--suppress AndroidDomInspection -->
         <EditTextPreference
-            android:defaultValue="fissureGIF"
+            android:defaultValue="GIFMAKER"
             android:key="pref_default_title"
             android:title="@string/pref_default_title" />
         <com.sanjay.gifmaker.PrefHelper.NumberPickerPreference
@@ -33,36 +34,36 @@
             android:title="@string/pref_img_load_title"
             />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_app_category">
-        <Preference
-            android:key="pref_static_field_key0"
-            android:selectable="false"
-            android:summary="@string/app_version"
-            android:title="@string/app_version_title" />
-        <Preference
-            android:key="pref_static_field_key1"
-            android:selectable="true"
-            android:summary="@string/license"
-            android:title="@string/license_title">
-            <intent android:action="android.intent.action.VIEW"
-                android:data="https://github.com/polypmer/fissure-android"/>
-        </Preference>
-        <Preference
-            android:key="pref_static_field_key2"
-            android:selectable="true"
-            android:summary="@string/author"
-            android:title="@string/author_title">
-            <intent android:action="android.intent.action.VIEW"
-                android:data="https://github.com/polypmer"/>
-        </Preference>
-        <Preference
-            android:key="pref_static_field_key3"
-            android:selectable="true"
-            android:summary="@string/contributors_list"
-            android:title="@string/contributors">
-            <intent android:action="android.intent.action.VIEW"
-                android:data="https://github.com/polypmer/fissure-android/graphs/contributors"/>
-        </Preference>
-    </PreferenceCategory>
+    <!--<PreferenceCategory android:title="@string/pref_app_category">-->
+    <!--<Preference-->
+    <!--android:key="pref_static_field_key0"-->
+    <!--android:selectable="false"-->
+    <!--android:summary="@string/app_version"-->
+    <!--android:title="@string/app_version_title" />-->
+    <!--<Preference-->
+    <!--android:key="pref_static_field_key1"-->
+    <!--android:selectable="true"-->
+    <!--android:summary="@string/license"-->
+    <!--android:title="@string/license_title">-->
+    <!--<intent android:action="android.intent.action.VIEW"-->
+    <!--android:data="https://github.com/polypmer/fissure-android"/>-->
+    <!--</Preference>-->
+    <!--<Preference-->
+    <!--android:key="pref_static_field_key2"-->
+    <!--android:selectable="true"-->
+    <!--android:summary="@string/author"-->
+    <!--android:title="@string/author_title">-->
+    <!--<intent android:action="android.intent.action.VIEW"-->
+    <!--android:data="https://github.com/polypmer"/>-->
+    <!--</Preference>-->
+    <!--<Preference-->
+    <!--android:key="pref_static_field_key3"-->
+    <!--android:selectable="true"-->
+    <!--android:summary="@string/contributors_list"-->
+    <!--android:title="@string/contributors">-->
+    <!--<intent android:action="android.intent.action.VIEW"-->
+    <!--android:data="https://github.com/polypmer/fissure-android/graphs/contributors"/>-->
+    <!--</Preference>-->
+    <!--</PreferenceCategory>-->
 
 </PreferenceScreen>

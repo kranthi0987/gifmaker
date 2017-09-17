@@ -16,7 +16,7 @@
     <string name="license">GPLv3</string>
     <string name="license_title">Licence</string>
     <string name="load_gif">Charger</string>
-    <string name="pref_app_category">Information de l\'Application</string>
+    <!--<string name="pref_app_category">Information de l\'Application</string>-->
     <string name="pref_compression">Compression</string>
     <string name="pref_compression_summary">Haute qualité (100) va augmenter la taille du fichier</string>
     <string name="pref_default_title">Nom du fichier Défaut</string>

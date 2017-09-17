@@ -36,6 +36,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.gun0912.tedpicker.ImagePickerActivity;
 import com.sanjay.gifmaker.PrefHelper.SettingsActivity;
 
@@ -46,16 +49,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     ArrayList<Bitmap> bitmaps = new ArrayList<>();
     ArrayList<String> images;
     ArrayList<Uri> uris = new ArrayList<>();
     ArrayAdapter<String> adapter;
-
     EditText editTxt;
     ImageView prevImg;
     String filename;
     private ProgressBar progressBar;
-
+    private AdView mAdView;
     private File GIF_DIR;
 
     private String DEFAULT_TITLE;
@@ -63,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     private int SAMPLE_SIZE = 3; // ?? unclear to me...
     private int REPEAT;
     private int DELAY; // milliseconds
+    //firebase
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         }
 
+// Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         // Create GIF folder if it doesn't exit
         GIF_DIR = new File(Environment.getExternalStorageDirectory() + File.separator +
                 Environment.DIRECTORY_PICTURES + File.separator + "Gifs");
@@ -98,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         // ActionBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setIcon(R.drawable.ic_fissure_logo_white);
+//        getSupportActionBar().setIcon(R.drawable.ic_fissure_logo_white);
 
         // Views
         Button btnGen = (Button) findViewById(R.id.generateGIF);
@@ -142,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
                 new GenerateGif().execute(bitmaps);
             }
         });
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
     }

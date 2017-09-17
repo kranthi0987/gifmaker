@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="camera-0.6.12">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.12/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.commonsware.cwac/camera/0.6.12/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/3e8302adf237bb361d73ccf7f51d0d04631fa56b/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/3e8302adf237bb361d73ccf7f51d0d04631fa56b/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

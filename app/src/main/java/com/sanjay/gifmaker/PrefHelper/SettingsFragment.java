@@ -6,7 +6,6 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
-import com.sanjay.gifmaker.BuildConfig;
 import com.sanjay.gifmaker.R;
 
 /**
@@ -30,9 +29,9 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         mNumberPicker = (NumberPickerPreference) findPreference("pref_compression");
 
         // TODO: Set Programmatically
-        String vName = BuildConfig.VERSION_NAME;
-        mVersion = findPreference("pref_static_field_key0");
-        mVersion.setSummary("Fissure " + vName);
+//        String vName = BuildConfig.VERSION_NAME;
+//        mVersion = findPreference("pref_static_field_key0");
+//        mVersion.setSummary("Fissure " + vName);
     }
 
     @Override

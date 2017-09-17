@@ -14,7 +14,7 @@
     <string name="pref_delay_summary">フレーム切り替え (ミリ秒)</string>
     <string name="pref_delay">フレーム間の遅延</string>
     <string name="pref_gif_category">GIF 生成</string>
-    <string name="pref_app_category">アプリケーション情報</string>
+    <!--<string name="pref_app_category">アプリケーション情報</string>-->
     <string name="remove">削除</string>
     <string name="image_options">画像オプション</string>
     <string name="share_gif">共有</string>

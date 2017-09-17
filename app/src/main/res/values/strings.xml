@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fissure</string>
+    <string name="app_name">Gif Maker</string>
     <string name="action_settings">Settings</string>
     <string name="pref_compression">Compression</string>
     <string name="pref_repeat">Repeat Indefinitely</string>
@@ -14,7 +14,7 @@
     <string name="pref_delay_summary">Frame switch in milliseconds</string>
     <string name="pref_delay">Delay Between Frames</string>
     <string name="pref_gif_category">GIF Generation</string>
-    <string name="pref_app_category">Application Information</string>
+    <!--<string name="pref_app_category">Application Information</string>-->
     <string name="remove">Remove</string>
     <string name="image_options">Image Options</string>
     <string name="share_gif">Share</string>
@@ -22,6 +22,7 @@
     <string name="preference_activity_title">Preferences</string>
     <string name="instructions_activity_title">Instructions</string>
     <string name="source">Source Code</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2324532608407659/3072049119</string>
     <string name="requirements_title">Image Requirements</string>
     <string name="title_file_size">File Sizes</string>
     <string name="title_interface">User Interface</string>
