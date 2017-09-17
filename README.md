@@ -1,4 +1,4 @@
-# fissure-android
+# gifmaker-android
 
 An Android App for generating and viewing GIFs.
 
